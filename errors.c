@@ -45,7 +45,7 @@ int _eputchar(char c)
  *
  * Return: 1 and -1 conditionally
  */
-int _putfd(char c,, int fd)
+int _putfd(char c, int fd)
 {
 	static int i;
 	static char buf[WRITE_BUF_SIZE];
