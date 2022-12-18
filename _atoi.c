@@ -28,14 +28,14 @@ int is_delim(char c, char *delim)
 }
 
 /**
- * is_alpha - charcks for alpha chars
+ * _isalpha - charcks for alpha chars
  * @c: Char input
  * Return: 1 or 0 conditionally
  */
 
 int _isalpha(int c)
 {
-	if (( c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
 		return (1);
 	else
 		return (0);
@@ -67,7 +67,7 @@ int _atoi(char *s)
 		}
 		else
 			if (flag == 1)
-				flag = 2:
+				flag = 2;
 	}
 
 	if (sign == -1)
