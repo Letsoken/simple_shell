@@ -58,6 +58,11 @@ typedef struct liststr
  * allowing uniform prototype for func pointer struct
  * @arg: string gen from a getlink cantained arg
  * @argv: an array of strings gen from arg
+ * @path: path
+ * @err_num: int
+ * @environs: shell environ
+ * @passinfo: ___
+ * @
  * @argc: arg count
  * @line_count: error count
  * @linecount_flag: if ON, count this line of input
@@ -110,7 +115,7 @@ typedef struct passinfo
 
 typedef struct builtin
 {
-	char *typr;
+	char *type;
 	int (*func)(info_t *);
 } builtin_table;
 
@@ -162,7 +167,7 @@ int _putchar(char);
 
 /* toem_tokenizer.c */
 
-char **strtow(char *, char );
+char **strtow(char *, char);
 char **strtow2(char *, char);
 
 /* toem_realloc.c */
