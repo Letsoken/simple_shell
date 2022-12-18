@@ -12,7 +12,7 @@ int _erratoi(char *s)
 
 	if (*s == '+')
 		s++;
-	for  (i =0; s[i] != '\0'; i++)
+	for  (i = 0; s[i] != '\0'; i++)
 	{
 		if (s[i] >= '0' && s[i] <= '9')
 		{
@@ -41,5 +41,5 @@ void print_error(info_t *info, char *estr)
 	_eputs(": ");
 	_eputs(info->argv[0]);
 	_eputs(": ");
-	_eputs(estr):wq
+	_eputs(estr);
 
