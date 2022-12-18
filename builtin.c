@@ -2,7 +2,7 @@
 
 /**
  * _myexit - exits shell
- * @info: Structure containing potential args. Used to maintain 
+ * @info: Structure containing potential args. Used to maintain
  * const func prototype
  *
  * Return: exits with a given exit status
@@ -35,7 +35,7 @@ int _myexit(info_t *info)
  * @info: struct containing potential args. Used to maintain
  * const func prototype
  *
- * Retur: Always 0
+ * Return: Always 0
  */
 int _mycd(info_t *info)
 {
@@ -54,21 +54,20 @@ int _mycd(info_t *info)
 		else
 			chdir_ret = chdir(dir);
 	}
-	else
-		if (_strcmp(info->argv[1], "-") == 0)
+	else if (_strcmp(info->argv[1], "-") == 0)
+	{
+		if (!_getenv(info, "OLDPWD"))
 		{
-			if (!_getenv(info, "OLDPWD"))
-			{
-				_puts(s);
-				_putchar('\n');
-				return (1);
-			}
-			_puts(_getenv(info, "OLDPWD=")), _putchar('\n');
-			chdir_ret =
-				chdir((dir = _getenv(info, "OLDPWD=")) ? dir : "/");
+			_puts(s);
+			_putchar('\n');
+			return (1);
 		}
-		else
-			chdir_ret = chdir(info->argv[1]);
+		_puts(_getenv(info, "OLDPWD=")), _putchar('\n');
+		chdir_ret =
+			chdir((dir = _getenv(info, "OLDPWD=")) ? dir : "/");
+	}
+	else
+		chdir_ret = chdir(info->argv[1]);
 	if (chdir_ret == -1)
 	{
 		print_error(info, "can't cd to ");
