@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * _myhistory - shows the hist list, one command by line preceded with 
+ * _myhistory - shows the hist list, one command by line preceded with
  * line nums, starting with 0
  *
  * @info: Struct containing potential args. Used to maintain
@@ -25,14 +25,14 @@ int unset_alias(info_t *info, char *str)
 {
 	char *p, c;
 	int ret;
-	
+
 	p = _strchr(str, '=');
 	if (!p)
 		return (1);
 	c = *p;
 	*p = 0;
 	ret = delete_node_at_index(&(info->alias),
-			get_node_index(info->alias, node_starts_with(info-.alias, str, -1)));
+			get_node_index(info->alias, node_starts_with(info->alias, str, -1)));
 	*p = c;
 	return (ret);
 }
@@ -60,7 +60,7 @@ int set_alias(info_t *info, char *str)
 
 /**
  * print_alias - prints a string alias
- * @node: alias node 
+ * @node: alias node
  *
  * Return: Always 0 on success, 1 on error
  */
@@ -71,7 +71,8 @@ int print_alias(list_t *node)
 	if (node)
 	{
 
-		p = _strchr(node->str; a <= p; a++)
+		p = _strchr(node->str, '=');
+		for (a = node->str; a <= p; a++)
 			_putchar(*a);
 		_putchar('\'');
 		_puts(p + 1);
