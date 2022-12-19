@@ -1,65 +1,35 @@
 #include "main.h"
 
 /**
+  * main - Shell.
   *
+  * Return: Always 0 on success.
   */
 int main(void)
 {
 	char *buffer = NULL;
 	char **av;
-	int ac;
-	pid_t child_pid1;
-	int status; /* size_t characters can be used to hold return of getline()*/
-	size_t characters;
+	int nread = 0;
 
-	printf("($) ");
-
-	/*char *strtok(char *str, const char *delim);*/
-	/*getline(char **strin, size_t *n, FILE *stream)*/
-	
-	/*characters = getline(&buffer, &bufsize, stdin);*/
-	characters = readline(&buffer, stdin);
-	av = _splstr(&buffer, characters);
-
-	if (av == NULL)
+	signal(SIGINT, sig_handler);
+	while (nread != EOF)
 	{
-		perror("av is Null. Could not execute\n");
-		exit(1);
+		_isatty();
+		nread = readline(&buffer, stdin);
+		_EOF(nread, buffer);
+		av = _splstr(&buffer, nread);
+
+		if (!av || !av[0])
+		{
+			free(buffer);
+			free(av);
+			continue;
+		}
+		
+
+		execute(av);
 	}
-
-	ac = 0;	
-	while (av[ac])
-	{
-		ac++;
-	}
-
-	if ( av[0] == "exit")
-		return (0);
-
-	child_pid1 = fork(); 
-
-	if (child_pid1 == -1)
-	{
-		perror("Error");
-		return (1);
-	}
-
-	if (child_pid1 == 0)
-	{	
-		if (execve(av[0], av, environ) == -1)
-			perror("Error");
-		sleep(3);
-	}
-	else
-	{
-		wait(&status);
-
-
-		for (; ac > 0; ac--)
-			free(av[ac - 1]);
-		free(av);
-
-		free(buffer);
-	}
+	freeav(av);
+	free(buffer);
 	return (0);
 }
