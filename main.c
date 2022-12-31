@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #include "main.h"
 
 /**
