@@ -25,7 +25,6 @@ int main(void)
 			free(av);
 			continue;
 		}
-		
 
 		execute(av);
 	}
