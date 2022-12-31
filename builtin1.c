@@ -52,7 +52,7 @@ int set_alias(info_t *info, char *str)
 	if (!p)
 		return (1);
 	if (!*++p)
-		return (unset_alias(info, st));
+		return (unset_alias(info, str));
 
 	unset_alias(info, str);
 	return (add_node_end(&(info->alias), str, 0) == NULL);
@@ -61,7 +61,6 @@ int set_alias(info_t *info, char *str)
 /**
  * print_alias - prints a string alias
  * @node: alias node
- *
  * Return: Always 0 on success, 1 on error
  */
 int print_alias(list_t *node)
