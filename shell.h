@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
-#include <fcnt1.h>
+#include <fcntl.h>
 #include <errno.h>
 #include <sys/wait.h>
 #include <sys/stat.h>
