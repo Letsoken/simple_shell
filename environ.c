@@ -1,8 +1,9 @@
 #include "shell.h"
 
 /**
- * _myenv - prints the present environment
- * @info: structure containing potential args. Maintains const func prototype
+ * _myenv - prints the current environment
+ * @info: Structure containing potential arguments. Used to maintain
+ *          constant function prototype.
  * Return: Always 0
  */
 int _myenv(info_t *info)
@@ -12,8 +13,8 @@ int _myenv(info_t *info)
 }
 
 /**
- * _getenv - provides the value of the environ var
- * @info: structure containing potential args. Maintains const func prototype
+ * _getenv - gets the value of an environ variable
+ * @info: Structure containing potential arguments. Used to maintain
  * @name: env var name
  *
  * Return: the value
@@ -29,15 +30,16 @@ char *_getenv(info_t *info, const char *name)
 		if (p && *p)
 			return (p);
 		node = node->next;
-
 	}
 	return (NULL);
 }
 
 /**
- * _mysetenv - Create a new env variable, or mod an existing one
- * @info: structure containing potential args. Maintains const func prototype
- * Return: Always 0
+ * _mysetenv - Initialize a new environment variable,
+ *             or modify an existing one
+ * @info: Structure containing potential arguments. Used to maintain
+ *        constant function prototype.
+ *  Return: Always 0
  */
 int _mysetenv(info_t *info)
 {
@@ -52,11 +54,11 @@ int _mysetenv(info_t *info)
 }
 
 /**
- * _myunsetenv - Remove an env variable
- * @info: structure containing potential args. Maintains const func prototype
- * Return: Always 0
+ * _myunsetenv - Remove an environment variable
+ * @info: Structure containing potential arguments. Used to maintain
+ *        constant function prototype.
+ *  Return: Always 0
  */
-
 int _myunsetenv(info_t *info)
 {
 	int i;
@@ -70,15 +72,14 @@ int _myunsetenv(info_t *info)
 		_unsetenv(info, info->argv[i]);
 
 	return (0);
-
 }
 
 /**
  * populate_env_list - populates env linked list
- *  @info: structure containing potential args. Maintains const func prototype
- *  Return: Always 0
+ * @info: Structure containing potential arguments. Used to maintain
+ *          constant function prototype.
+ * Return: Always 0
  */
-
 int populate_env_list(info_t *info)
 {
 	list_t *node = NULL;
